@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-pod-1
+  name: news-portal-service
 spec:
   type: NodePort
   selector:
-    name: pod1
+    app: news-portal
   ports:
-    - port: 80
-      nodePort: 30000
-      
+  - port: 80
+    nodePort: 30000
