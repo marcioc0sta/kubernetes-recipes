@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-portal
+  labels:
+    app: db-portal
+spec:
+  containers:
+    - name: db-portal-container
+      image: aluracursos/mysql-db:1
+      resources:
+        limits:
+          memory: "768Mi"
+          cpu: "1000m"
+      ports:
+        - containerPort: 3306
+      envFrom:
+        - configMapRef:
+            name: db-portal-configmap
