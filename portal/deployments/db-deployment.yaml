@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-portal-deployment
+spec:
+  selector:
+    matchLabels:
+      app: db-portal
+  template:
+    metadata:
+      name: db-portal
+      labels:
+        app: db-portal
+    spec:
+      containers:
+        - name: db-portal-container
+          image: aluracursos/mysql-db:1
+          resources:
+            limits:
+              memory: "768Mi"
+              cpu: "1000m"
+          ports:
+            - containerPort: 3356
+          envFrom:
+            - configMapRef:
+                name: db-portal-configmap

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cms-deployment
+spec:
+  selector:
+    matchLabels:
+      app: cms-portal
+  template:
+    metadata:
+      name: cms-portal
+      labels:
+        app: cms-portal
+    spec:
+      containers:
+        - name: cms-portal-container
+          image: aluracursos/sistema-noticias:1
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: cms-portal-configmap
