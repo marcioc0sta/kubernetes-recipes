@@ -15,10 +15,6 @@ spec:
       containers:
         - name: cms-portal-container
           image: aluracursos/sistema-noticias:1
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           ports:
             - containerPort: 80
           envFrom:
